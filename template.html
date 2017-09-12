@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto 1 - {{ aluno.Nome }}</title>
+<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+<style>
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
+}
+
+table {
+  max-width: 960px;
+  margin: 10px auto;
+}
+
+caption {
+  font-size: 1.6em;
+  font-weight: 400;
+  padding: 10px 0;
+}
+
+tr {
+  background: #f4f7f8;
+  border-bottom: 1px solid #FFF;
+  margin-bottom: 5px;
+}
+
+tr:nth-child(even) {
+  background: #e8eeef;
+}
+
+.header-column {
+  font-weight: 400;
+  background: #8a97a0;
+  color: #FFF;
+}
+
+th, td {
+  text-align: left;
+  padding: 20px;
+  font-weight: 300;
+}
+
+tfoot tr {
+  background: none;
+}
+
+tfoot td {
+  padding: 10px 2px;
+  font-size: 0.8em;
+  font-style: italic;
+  color: #8a97a0;
+}
+</style>
+</head>
+<body>
+
+<h1>Projeto 1 - {{ aluno.Nome }}</h1>
+
+<p>Lorem ipsum dolor sit amet, ei sint case vim. Nam soleat corrumpit no. Vero novum legendos mei te, ei paulo referrentur pri, no dolores electram dissentias eam. Decore soleat fuisset at vel, ius ex natum delicata necessitatibus. Duo cu officiis lucilius posidonium.</p>
+
+<table>
+{% for nome, valor in aluno._asdict().items() %}
+{% if nome not in ('Index', 'Nome') %}
+<tr>
+<td class="header-column">{{ nome }}</td>
+<td>{{ valor.replace('\n', '<br/>') }}</td>
+</tr>
+{% endif %}
+{% endfor %}
+</table>
+
+</body>
+</html>
